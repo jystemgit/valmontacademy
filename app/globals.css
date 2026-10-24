@@ -1209,13 +1209,10 @@ summary:focus-visible {
   }
 
   .menu-toggle {
+    position: relative;
     display: flex;
     width: 48px;
     height: 48px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
     border: 1px solid var(--line);
     border-radius: 14px;
     background: transparent;
@@ -1224,28 +1221,39 @@ summary:focus-visible {
   }
 
   .menu-toggle span {
-    width: 17px;
-    height: 1.5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
     background: var(--ink);
+    transform: translate(-50%, -50%);
+    transform-origin: center;
     transition:
       transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
-      translate 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
       opacity 160ms ease;
   }
 
+  .menu-toggle span:first-child {
+    transform: translate(-50%, -50%) translateY(-6px);
+  }
+
+  .menu-toggle span:last-child {
+    transform: translate(-50%, -50%) translateY(6px);
+  }
+
   .menu-toggle.is-open span:first-child {
-    translate: 0 6.5px;
-    transform: rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   .menu-toggle.is-open span:nth-child(2) {
-    transform: scaleX(0);
+    transform: translate(-50%, -50%) scaleX(0);
     opacity: 0;
   }
 
   .menu-toggle.is-open span:last-child {
-    translate: 0 -6.5px;
-    transform: rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 
   .mobile-nav {
